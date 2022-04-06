@@ -12,13 +12,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from '../app-routing.module';
-import { NavbarComponent } from '../components/navbar/navbar.component';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
   ],
-  declarations: [LoginPage,NavbarComponent]
+  declarations: [LoginPage]
 })
 export class LoginPageModule {}
 

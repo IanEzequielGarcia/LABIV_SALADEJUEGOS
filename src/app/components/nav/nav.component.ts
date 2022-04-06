@@ -1,18 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/shared/authentication-service';
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  selector: 'app-nav',
+  templateUrl: './nav.component.html',
+  styleUrls: ['./nav.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavComponent implements OnInit {
 
-  constructor(private authService: AuthenticationService,) { }
+  constructor(private authService: AuthenticationService) { }
 
   ngOnInit(): void {
+    
   }
   async estaLogeado()
   {
     return this.authService.isLoggedIn;
   }
+
 }

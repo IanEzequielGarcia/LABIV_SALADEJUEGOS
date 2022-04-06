@@ -8,11 +8,13 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { QuienSoyComponent } from './components/quien-soy/quien-soy.component';
 import { HomeComponent } from './components/home/home.component';
+import { NavComponent } from './components/nav/nav.component';
 @NgModule({
   declarations: [
     AppComponent,
     QuienSoyComponent,
-    HomeComponent
+    HomeComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
