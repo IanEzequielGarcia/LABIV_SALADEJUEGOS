@@ -1,0 +1,38 @@
+<app-navbar></app-navbar>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+  <title>Ian Garcia</title>
+</head>
+<body>
+  <form action="#" id="login-form">
+    <div class="heading">Registro/Login</div>
+    <div class="left">
+      <label for="email">Email</label> <br />
+      <input type="email" #email name="email" id="email" /> <br />
+      <label for="password" >Password</label> <br />
+      <input type="password" #password name="password" id="pass" /> <br />
+      <input type="submit" value="Login" (click)="logIn(email,password)"/> <br />
+     
+      <label style="font-size: 1em;">No tenes cuenta?<a (click)="registro(email,password)" style="color: blue; text-decoration: underline;font-size: 1em;"> Registrate</a></label>
+    </div>
+    <div class="right">
+  <div class="connect">Entrar con</div>
+      <!--
+      <a href="" class="facebook">
+      <i class="bi bi-facebook" aria-hidden="true"></i>
+      </a> <br />
+      -->
+       <a (click)="logInGoogle()" class="google-plus">
+        <span class="fontawesome-google-plus">
+          <i class="bi bi-google" aria-hidden="true"></i>
+        </span>
+      </a>
+    </div>
+  </form>  
+</body>
+</html>
