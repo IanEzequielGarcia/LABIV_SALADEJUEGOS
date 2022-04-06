@@ -13,7 +13,9 @@ div {
 
 div img {
     position:absolute;
-    top:75em;
+    top:70em;
+    max-width:max-content;
+    max-height: max-content;
     left:0;
     right:0;
     bottom:0;
