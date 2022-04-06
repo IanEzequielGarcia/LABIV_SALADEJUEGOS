@@ -5,15 +5,15 @@ import { AppComponent } from '../../app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { LoginPage } from 'src/app/login/login.page';
 
 @NgModule({
   imports: [
-    BrowserModule,
-    NavbarComponent,
-    NgbModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    CommonModule,
+    FormsModule,
+  ]
 })
-export class AppModule { }
+export class LoginPageModule {}
+
