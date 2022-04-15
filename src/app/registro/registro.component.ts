@@ -2,7 +2,9 @@ import { Component,OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import firebase from 'firebase/compat/app';
+import { LoginPage } from '../login/login.page';
 import { AuthService } from '../services/auth.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -25,8 +27,11 @@ export class RegistroComponent implements OnInit {
     this.authService.RegisterUser(email,password)
     .then((res) => {
       window.alert('Registrado Correctamente');
+      var login = new LoginPage(this.authService,this.router);
+      login.usuario=this.usuario;
+      login.logIn();
     }).catch((error) => {
-      window.alert(error.message);
+      Swal.fire(error.message);
       return null;
     });
   }
@@ -35,7 +40,7 @@ export class RegistroComponent implements OnInit {
     .then((res) => {
       window.alert('Logueado Correctamente');
     }).catch((error) => {
-      window.alert(error.message);
+      Swal.fire(error.message);
       return null;
     });
   }
