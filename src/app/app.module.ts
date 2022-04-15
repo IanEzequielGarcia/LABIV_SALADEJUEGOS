@@ -9,17 +9,27 @@ import { environment } from 'src/environments/environment';
 import { QuienSoyComponent } from './components/quien-soy/quien-soy.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavComponent } from './components/nav/nav.component';
+import { MayorMenorComponent } from './juegos/mayor-menor/mayor-menor.component';
+import { PreguntadosComponent } from './juegos/preguntados/preguntados.component';
+import { AhorcadoComponent } from './juegos/ahorcado/ahorcado.component';
+import { RegistroComponent } from './registro/registro.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
     QuienSoyComponent,
     HomeComponent,
-    NavComponent
+    NavComponent,
+    MayorMenorComponent,
+    PreguntadosComponent,
+    AhorcadoComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],

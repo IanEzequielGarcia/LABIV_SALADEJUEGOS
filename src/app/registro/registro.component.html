@@ -9,14 +9,13 @@
 </head>
 <body>
   <form action="#" id="login-form">
-    <div class="heading">Login</div>
+    <div class="heading">Registro</div>
     <div class="left">
       <label for="email">Email</label> <br />
       <input type="email" [(ngModel)]="usuario.email" name="email" id="email" /> <br />
       <label for="password" >Password</label> <br />
       <input type="password" [(ngModel)]="usuario.password" name="password" id="pass" /> <br />
-      <input type="submit" value="Login" (click)="logIn()"/> <br />
-      <label style="font-size: 1em;">No tenes cuenta? <a href="/registro">Registrate</a></label>
+      <input type="submit" value="Registrarse" (click)="registro()"/> <br />
     </div>
     <div class="right">
   <div class="connect">Entrar con</div>

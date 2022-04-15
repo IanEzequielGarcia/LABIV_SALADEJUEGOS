@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import firebase from 'firebase/compat/app';
 import { AuthService } from '../services/auth.service';
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  selector: 'app-registro',
+  templateUrl: './registro.component.html',
+  styleUrls: ['./registro.component.scss']
 })
-export class LoginPage implements OnInit {
+export class RegistroComponent implements OnInit {
   usuario={
     email:'',
     password:''
@@ -17,17 +17,7 @@ export class LoginPage implements OnInit {
     private authService: AuthService,
     private router: Router
   ) {}
-  ngOnInit() {}
-  logIn() {
-    const{email,password} =this.usuario;
-    this.authService.SignIn(email, password)
-      .then((res) => {
-        window.alert('Logueado Correctamente');
-        this.router.navigate(['home']);
-      }).catch((error) => {
-        window.alert(error.message);
-        return null;
-      });
+  ngOnInit(): void {
   }
   async registro()
   {
@@ -49,5 +39,4 @@ export class LoginPage implements OnInit {
       return null;
     });
   }
-  
 }
