@@ -1,14 +1,6 @@
 @import '~compass-mixins/lib/compass/css3';
 
-[class*="fontawesome-"]:before {
-  font-family: 'FontAwesome', sans-serif;
-}
-
-
 body {
-  @include background(
-    linear-gradient(left, #272838, #2b2d41, #393549, #433545)
-  );
   font-family: 'Raleway', sans-serif;
 }
 
@@ -145,22 +137,13 @@ div.right {
     @include border-radius(0.3em);
   }
   
-  a.facebook {
-    background: #3a589a;
-    margin-top: 0.8em;
-    @include transition(0.15s all ease-in-out);
-    
-    &:hover {
-      background: rgba(#3a589a, 0.8);
-    }
-  }
-  
   a.twitter {
     background: #4099ff;
     @include transition(0.15s all ease-in-out);
     
     &:hover {
       background: rgba(#4099ff, 0.8);
+      cursor: pointer;
     }
   }
   
@@ -170,6 +153,7 @@ div.right {
     
     &:hover {
       background: rgba(#e9544f, 0.8);
+      cursor: pointer;
     }
   }
 }
