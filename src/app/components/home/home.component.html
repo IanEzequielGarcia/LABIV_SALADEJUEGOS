@@ -1,1 +1,45 @@
-<div><img src="https://firebasestorage.googleapis.com/v0/b/pruebaapp-d5f1d.appspot.com/o/main.png?alt=media&token=558cf3d1-0eb4-4df8-af19-d03cc773a44a"></div>
+<!--<div><img src="https://firebasestorage.googleapis.com/v0/b/pruebaapp-d5f1d.appspot.com/o/main.png?alt=media&token=558cf3d1-0eb4-4df8-af19-d03cc773a44a"></div>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="card-group">
+        <div class="card">
+          <img class="card-img-top" src="https://firebasestorage.googleapis.com/v0/b/tpsaladejuegos-8b998.appspot.com/o/MayorOMenor.PNG?alt=media&token=f7134886-34d1-4398-961b-e139e78fa642" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Mayor O Menor</h5>
+            <p class="card-text">Un juego de Mayor O Menor con naipes</p>
+            <div class="nav-item" *ngIf="estaLogueado|async as User; else elseBlock">
+                <a class="card-text" href="/juegos/mayor-menor">Jugar</a>
+            </div>
+            <ng-template #elseBlock> <strong #elseBlock>Registrese para jugar.</strong></ng-template>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top" src="https://firebasestorage.googleapis.com/v0/b/tpsaladejuegos-8b998.appspot.com/o/ahorcado.PNG?alt=media&token=0a4541f9-7ecd-4b5d-a232-9b08f5689881" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Ahorcado</h5>
+            <p class="card-text">Un juego de Ahorcado de redes sociales</p>
+            <div class="nav-item" *ngIf="estaLogueado|async as User; else elseBlock">
+                <a class="card-text" href="/juegos/ahorcado">Jugar</a>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img-top" src="https://www.tec.ac.cr/sites/all/themes/tec/img/404.png" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Preguntados</h5>
+            <p class="card-text">En proceso...</p>
+            <div class="nav-item" *ngIf="estaLogueado|async as User; else elseBlock">
+                <a class="card-text" href="/juegos/preguntados">Jugar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+</body>
+</html>

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { User } from 'src/app/shared/users';
-import {AngularFireAuth} from '@angular/fire/compat/auth';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',

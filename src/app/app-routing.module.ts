@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 import { QuienSoyComponent } from './components/quien-soy/quien-soy.component';
 import { AhorcadoComponent } from './juegos/ahorcado/ahorcado.component';
 import { MayorMenorComponent } from './juegos/mayor-menor/mayor-menor.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
   {
     path: 'login',
     component:LoginPage
+    //loadChildren: () => import('./juegos/ahorcado/ahorcado.component').then(m => m.AhorcadoComponent)
   },
   {
     path: 'registro',
@@ -26,18 +28,23 @@ const routes: Routes = [
     component:QuienSoyComponent
   },
   {
+    path: 'juegos',
+    loadChildren: () => import('./juegos/juegos.module').then(m => m.JuegosModule)
+    /*children: [
+      { path: 'ahorcado', component:AhorcadoComponent},
+      { path: 'preguntados', component:PreguntadosComponent},
+      { path: 'mayoromenor', component:MayorMenorComponent},
+    ]*/
+  },
+  {
     path: '',
     pathMatch:'full',
     component:HomeComponent
   },
   {
-    path: 'juegos',
-    children: [
-      { path: 'ahorcado', component:AhorcadoComponent},
-      { path: 'preguntados', component:PreguntadosComponent},
-      { path: 'mayoromenor', component:MayorMenorComponent},
-    ]
-  }
+    path: '**',
+    component:NotFoundComponent
+  },
 ];
 
 

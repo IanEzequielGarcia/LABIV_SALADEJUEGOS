@@ -1,4 +1,4 @@
-
+@import '~compass-mixins/lib/compass/css3';
 div.left {
     label {
       display: inline-block;
@@ -29,7 +29,7 @@ div.left {
       outline: none;
       text-transform: uppercase;
       padding: 1.2em;
-      overflow: hidden;
+      overflow: hide;
       border: none;
       letter-spacing: 0.1em;
       margin: 0.5em 0;

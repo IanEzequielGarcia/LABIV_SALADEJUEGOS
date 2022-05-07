@@ -1,0 +1,70 @@
+.cardContainer{
+    width: 300px;
+    height: 500px;
+    position: fixed;
+    right: 0.5rem;
+    bottom: 0.5rem;
+}
+.card-header{
+    background-color: #f85f64;
+    color:#ffffff;
+    font-weight: 500;
+}
+.card-body{
+    padding: 0.5rem;
+}
+.inputFoto:active{
+    transform: scale(0.75);
+}
+
+.enviado{
+    display: block;
+    float:right;
+    background-color: cornflowerblue;
+    color: white;
+    min-width: 50.01%;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.recibido{
+    display: block;
+    float:left;
+    background-color: crimson;
+    color: white;
+    min-width: 50.01%;
+    border-radius: 10px;
+    text-align: left;
+}
+.contenedorChat{
+    overflow: scroll;
+    padding: 0.3rem;
+}
+.contenedorChat::-webkit-scrollbar{
+    display: none;
+}
+
+.chatContainer{
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: grey;
+    border-radius: 100%;
+    box-shadow: 0 0 10px 2px;
+}
+.chatIcon{
+    width: 40px;
+    height: 40px;
+}
+.closeIcon{
+    position: absolute;
+    right: 0.5rem;
+    top: 0rem;
+    cursor: pointer;
+}

@@ -4,13 +4,22 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat
 import firebase from 'firebase/compat/app';
 import { Router } from '@angular/router';
 import { User } from '../shared/users';
-
+import { doc, Firestore, setDoc } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
+import { FirebaseOptions, initializeApp } from "firebase/app";
+import { environment } from 'src/environments/environment';
+import { collection, addDoc } from "firebase/firestore";
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   userData: any;
-  constructor(private afauth:AngularFireAuth, public afStore: AngularFirestore,
+  //app = initializeApp(environment as FirebaseOptions);
+  //db = getFirestore(this.app);
+
+  constructor(
+    private afauth:AngularFireAuth,
+    public afStore: AngularFirestore,
     public ngFireAuth: AngularFireAuth,
     public router: Router,
     public ngZone: NgZone,
@@ -41,6 +50,11 @@ export class AuthService {
   }
   // Register user with email/password
   async RegisterUser(email:string, password:string) {
+    let dateTime = new Date();
+      /*let docRef = await addDoc(collection(this.db, "logger"), {
+      usuario: email,
+      fecha: `${dateTime.getDay()}/${dateTime.getMonth()}/${dateTime.getFullYear()}`
+    });*/
     return this.ngFireAuth.createUserWithEmailAndPassword(email, password);
   }
   // Email verification when new user register

@@ -14,6 +14,8 @@ import { PreguntadosComponent } from './juegos/preguntados/preguntados.component
 import { AhorcadoComponent } from './juegos/ahorcado/ahorcado.component';
 import { RegistroComponent } from './registro/registro.component';
 import { FormsModule } from '@angular/forms';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ChatComponent } from './components/chat/chat.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +25,9 @@ import { FormsModule } from '@angular/forms';
     MayorMenorComponent,
     PreguntadosComponent,
     AhorcadoComponent,
-    RegistroComponent
+    RegistroComponent,
+    NotFoundComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

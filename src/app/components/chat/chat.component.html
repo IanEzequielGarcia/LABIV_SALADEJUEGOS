@@ -1,0 +1,33 @@
+<div *ngIf="usuario && !mostrarChat" class="chatContainer" (click)="mostrarChat=true">
+    <img src="https://vignette.wikia.nocookie.net/lab-rats/images/a/a3/Chat-icon.png/revision/latest/scale-to-width-down/480?cb=20151227002733" class="chatIcon" alt="chatIcon">
+</div>
+
+<div class="card text-center cardContainer" *ngIf="usuario && mostrarChat">
+    <div class="card-header">
+      Chat
+      <div class="closeIcon"(click)="mostrarChat=false">X</div>
+    </div>
+
+    <div class="card-body">
+        <div id="contenedorChat" class="contenedorChat h-100">
+            <p *ngFor="let mensaje of mensajeList" class="msj p-2"
+                [ngClass]="(usuario.uid==mensaje.emisor)?'enviado':'recibido' ">
+                {{mensaje.nombre}} {{mensaje.hora}}:
+                <br>
+                {{mensaje.texto}}
+            </p>
+        </div>
+    </div>
+
+    <form class="card-footer text-muted input-group" (ngSubmit)="MensajeEnviado()">
+        <input type="text" class="form-control" placeholder="Envie un mensaje" [(ngModel)]="mensaje"
+        [ngModelOptions]="{standalone:true}">
+        <div class="input-group-append" (click)="MensajeEnviado()">
+            <span class="input-group-text" id="basic-addon2">
+                <img class="inputFoto" src="https://vignette.wikia.nocookie.net/lab-rats/images/a/a3/Chat-icon.png/revision/latest/scale-to-width-down/480?cb=20151227002733" 
+                width="30px" height="38px" alt="Envie un mensaje">
+            </span>
+        </div>
+    </form>
+
+</div>

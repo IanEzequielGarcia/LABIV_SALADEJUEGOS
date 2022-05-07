@@ -11,5 +11,4 @@ export class AhorcadoComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
