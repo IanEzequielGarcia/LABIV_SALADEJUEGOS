@@ -1,9 +1,16 @@
+.body{
+    height: 100%;
+}
 .cardContainer{
     width: 300px;
     height: 500px;
-    position: fixed;
+    position: absolute;
     right: 0.5rem;
     bottom: 0.5rem;
+    overflow-y:scroll !important; 
+}
+.cardContainer::-webkit-scrollbar{
+    display: none;
 }
 .card-header{
     background-color: #f85f64;
@@ -37,14 +44,16 @@
     text-align: left;
 }
 .contenedorChat{
-    overflow: scroll;
-    padding: 0.3rem;
+    height: max-content;
+    overflow-y:scroll !important; 
+    //overflow: scroll !important;
+    padding: 0.35rem;
 }
 .contenedorChat::-webkit-scrollbar{
     display: none;
 }
-
 .chatContainer{
+    height: 100vh;
     width: 60px;
     height: 60px;
     position: fixed;

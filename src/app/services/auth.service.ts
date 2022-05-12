@@ -5,24 +5,23 @@ import firebase from 'firebase/compat/app';
 import { Router } from '@angular/router';
 import { User } from '../shared/users';
 import { doc, Firestore, setDoc } from "firebase/firestore";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore,collection, addDoc,getDocs,runTransaction } from "firebase/firestore";
 import { FirebaseOptions, initializeApp } from "firebase/app";
 import { environment } from 'src/environments/environment';
-import { collection, addDoc } from "firebase/firestore";
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   userData: any;
-  //app = initializeApp(environment as FirebaseOptions);
-  //db = getFirestore(this.app);
-
+  app = initializeApp(environment.firebaseConfig);
+  db = getFirestore(this.app);
   constructor(
     private afauth:AngularFireAuth,
     public afStore: AngularFirestore,
     public ngFireAuth: AngularFireAuth,
     public router: Router,
     public ngZone: NgZone,
+    
     ) {
       this.ngFireAuth.authState.subscribe((user) => {
         if (user) {
@@ -35,6 +34,18 @@ export class AuthService {
         }
       });
      }
+  public async getMensajes(){
+    const snapshot = await firebase.firestore().collection('chat').get()
+    return snapshot.docs.map(doc => doc.data());
+
+
+    //@ts-ignore
+    /*return  this.afStore.collection("chat").snapshotChanges((snap)=>{
+      snap.forEach((snapHijo: any)=>{
+        console.log(snapHijo);
+      })
+    });*/
+  }
   public async logInGoogle() {
     try{
       return await this.afauth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
@@ -46,16 +57,23 @@ export class AuthService {
   }
    // Login in with email/password
   async SignIn(email:string, password:string) {
+    let fecha = new Date();
+    addDoc(collection(this.db,"logger"), {
+      email: email,
+      fecha: `${fecha.getDay()}/${fecha.getMonth()}`,
+    });
     return this.ngFireAuth.signInWithEmailAndPassword(email, password);
   }
   // Register user with email/password
   async RegisterUser(email:string, password:string) {
-    let dateTime = new Date();
-      /*let docRef = await addDoc(collection(this.db, "logger"), {
-      usuario: email,
-      fecha: `${dateTime.getDay()}/${dateTime.getMonth()}/${dateTime.getFullYear()}`
-    });*/
+    addDoc(collection(this.db,"usuarios"), {
+      email: email,
+      fecha: password,
+    });
     return this.ngFireAuth.createUserWithEmailAndPassword(email, password);
+  }
+  async NuevoMensaje(datos:any){
+    addDoc(collection(this.db,"chat"), {datos});
   }
   // Email verification when new user register
   /*
@@ -68,7 +86,7 @@ export class AuthService {
   }
   */
   // Recover password
-  async PasswordRecover(passwordResetEmail:string) {
+  /*async PasswordRecover(passwordResetEmail:string) {
     return this.ngFireAuth
       .sendPasswordResetEmail(passwordResetEmail)
       .then(() => {
@@ -79,7 +97,7 @@ export class AuthService {
       .catch((error) => {
         window.alert(error);
       });
-  }
+  }*/
   // Returns true when user is looged in
   isLoggedIn() {
     return this.afauth.authState;

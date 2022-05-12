@@ -9,8 +9,8 @@
     </div>
 
     <div class="card-body">
-        <div id="contenedorChat" class="contenedorChat h-100">
-            <p *ngFor="let mensaje of mensajeList" class="msj p-2"
+        <div id="contenedorChat" class="contenedorChat h-90">
+            <p *ngFor="let mensaje of mensajeLista" class="msj p-2"
                 [ngClass]="(usuario.uid==mensaje.emisor)?'enviado':'recibido' ">
                 {{mensaje.nombre}} {{mensaje.hora}}:
                 <br>

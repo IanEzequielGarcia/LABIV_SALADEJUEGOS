@@ -8,15 +8,13 @@ var socialMedia = [
     "wechat",
     "facebook",
     "telegram",
-    "bbm",
     "palmchat",
     "gmail",
     "linkedin",
     "reddit",
     "hangouts",
-    "qq",
+    "discord",
     "twitch",
-    "douyin"
   ]
   let answer = '';
   let maxWrong = 6;
@@ -28,15 +26,6 @@ var socialMedia = [
   function randomWord() {
     answer = socialMedia[Math.floor(Math.random() * socialMedia.length)];
   }
-  
-  document.onkeypress = function (e) {
-    e = e || window.event;
-    var charCode = e.charCode || e.keyCode,
-        character = String.fromCharCode(charCode);
-  
-    if (alphabets.includes(character))
-    handleGuess(character);
-  };
   
   function generateButtons() {
     let buttonsHTML = 'abcdefghijklmnopqrstuvwxyz'.split('').map(letter =>

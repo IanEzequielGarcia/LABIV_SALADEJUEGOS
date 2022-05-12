@@ -8,14 +8,27 @@
   <title>Ian Garcia</title>
 </head>
 <body>
-  <form action="#" id="login-form">
+  <form action="#" id="login-form" [formGroup]="registroForm">
     <div class="heading">Registro</div>
     <div class="left">
       <label for="email">Email</label> <br />
-      <input type="email" [(ngModel)]="usuario.email" name="email" id="email" /> <br />
+      <div *ngIf="emailGet && emailGet.invalid && emailGet.touched" class="warningForm">
+        El Email es obligatorio.
+      </div>
+      <div *ngIf="emailGet && emailGet!.errors?.['minlength'] && emailGet.touched" class="warningForm">
+        El email debe tener mas de 4 caracteres.
+      </div>
+      <input type="email" required [(ngModel)]="usuario.email" formControlName="emailForm" class="form-control" name="email" id="email" /> <br />
       <label for="password" >Password</label> <br />
-      <input type="password" [(ngModel)]="usuario.password" name="password" id="pass" /> <br />
-      <input type="submit" value="Registrarse" (click)="registro()"/> <br />
+
+      <input type="password" required [(ngModel)]="usuario.password" formControlName="passwordForm" class="form-control" name="password" id="pass" /> <br />
+      <div *ngIf="passwordGet && passwordGet.invalid && passwordGet.touched" class="warningForm">
+        La contraseña es obligatoria.
+      </div>
+      <div *ngIf=" passwordGet && passwordGet!.errors?.['minlength'] && passwordGet.touched" class="warningForm">
+        La contraseña debe tener mas de 4 caracteres.
+      </div>
+      <input [disabled]="registroForm.invalid" type="submit" value="Registrarse" (click)="registro()"/> <br />
     </div>
     <div class="right">
   <div class="connect">Entrar con</div>
@@ -24,7 +37,7 @@
       <i class="bi bi-facebook" aria-hidden="true"></i>
       </a> <br />
       -->
-       <a (click)="logInGoogle()" class="google-plus">
+      <a (click)="logInGoogle()" class="google-plus">
         <span class="fontawesome-google-plus">
           <i class="bi bi-google" aria-hidden="true"></i>
         </span>

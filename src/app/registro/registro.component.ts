@@ -1,11 +1,11 @@
 import { Component,OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
-import firebase from 'firebase/compat/app';
 import { LoginPage } from '../login/login.page';
 import { AuthService } from '../services/auth.service';
 import Swal from 'sweetalert2';
-import { getDatabase, ref, set } from "firebase/database";
+
+import { getFirestore } from "firebase/firestore";
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-registro',
@@ -13,7 +13,10 @@ import { getDatabase, ref, set } from "firebase/database";
   styleUrls: ['../login/login.page.scss','../login/login.page.extended.scss']
 })
 export class RegistroComponent implements OnInit {
-  db = getDatabase();
+  registroForm = new FormGroup({
+    emailForm : new FormControl('',[Validators.required,Validators.minLength(4),Validators.email]),
+    passwordForm : new FormControl('',[Validators.required,Validators.minLength(4)]),
+  });
   usuario={
     email:'',
     password:''
@@ -24,6 +27,12 @@ export class RegistroComponent implements OnInit {
   ) {}
   ngOnInit(): void {
   }
+  get emailGet(){
+    return this.registroForm.get('emailForm');
+  }
+  get passwordGet(){
+    return this.registroForm.get('passwordForm');
+  }
   async registro()
   {
     const{email,password} =this.usuario;
@@ -32,8 +41,10 @@ export class RegistroComponent implements OnInit {
       Swal.fire('Registrado Correctamente');
       var login = new LoginPage(this.authService,this.router);
       login.usuario=this.usuario;
+      
+      let usuario = getFirestore()
+
       login.logIn();
-      this.logger();
     }).catch((error) => {
       Swal.fire(error.message);
       return null;
@@ -48,14 +59,4 @@ export class RegistroComponent implements OnInit {
       return null;
     });
   }
- async logger()
- {
-  let dateTime = new Date();
-  let fecha = `${dateTime.getDate()+'/'+dateTime.getMonth()+'/'+dateTime.getFullYear()}`;
-  console.log(`${this.usuario.email}, ${fecha} `)
-  set(ref(this.db, 'users/' + fecha), {
-    email: this.usuario.email,
-    date: fecha,
-  });
- }
 }

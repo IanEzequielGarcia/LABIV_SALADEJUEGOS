@@ -3,8 +3,9 @@
         var deck = new Array();
         var players = new Array();
         var currentPlayer = 0;
-        var vidas=10;
+        var puntos=0;
         var cartaAnterior=0;
+        
         function createDeck()
         {
             deck = new Array();
@@ -72,7 +73,7 @@
         {
             document.getElementById('btnStart').value = 'Reiniciar';
             document.getElementById("status").style.display="none";
-            vidas=10;
+            puntos=0;
             cartaAnterior=0;
             // deal 2 cards to every player object
             currentPlayer = 0;
@@ -146,6 +147,7 @@
                 document.getElementById('points_' + i).innerHTML = players[i].Points;
             }
         }
+
         function hitMe()
         {
             // pop a card from the deck to the current player
@@ -159,15 +161,14 @@
             console.log("CARTA ANTERIOR "+cartaAnterior);
             console.log("Cartas "+deck.length);
 
-            if(vidas>1)
+            if(puntos<=9&&deck.length>1)
             {
-                if (players[currentPlayer].Points < cartaAnterior && players[currentPlayer].Points != cartaAnterior)
+                if (players[currentPlayer].Points > cartaAnterior && players[currentPlayer].Points != cartaAnterior)
                 {
-                    vidas--;
+                    puntos++;
                     updateDeck();
+                    end();
                 }
-            }else if(deck.length<1){
-                end();
             }else{
                 document.getElementById('status').innerHTML = 'Perdiste';
                 document.getElementById('status').style.display = "inline-block";
@@ -186,15 +187,14 @@
             console.log("CARTA ACTUAL "+players[currentPlayer].Points);
             console.log("CARTA ANTERIOR "+cartaAnterior);
             console.log("Cartas "+deck.length);
-            if(vidas>1)
+            if(puntos<=9&&deck.length>1)
             {
-                if (players[currentPlayer].Points > cartaAnterior && players[currentPlayer].Points != cartaAnterior)
+                if (players[currentPlayer].Points < cartaAnterior && players[currentPlayer].Points != cartaAnterior)
                 {
-                    vidas--;
+                    puntos++;
                     updateDeck();
+                    end();
                 }
-            }else if(deck.length<1){
-                end();
             }
             else{
                 document.getElementById('status').innerHTML = 'Perdiste';
@@ -206,7 +206,7 @@
 
         function end()
         {
-            if(deck.length<1)
+            if(puntos>9)
             {
                 document.getElementById('status').innerHTML = 'Ganaste';
                 document.getElementById("status").style.display = "inline-block";
@@ -216,7 +216,7 @@
         function updateDeck()
         {
             //document.getElementById('deckcount').innerHTML = deck.length;
-            document.getElementById('deckcount').innerHTML = vidas;
+            document.getElementById('deckcount').innerHTML = puntos;
         }
 
         window.addEventListener('load', function(){

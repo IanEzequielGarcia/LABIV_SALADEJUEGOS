@@ -29,7 +29,7 @@ div.left {
       outline: none;
       text-transform: uppercase;
       padding: 1.2em;
-      overflow: hide;
+      overflow: hidden;
       border: none;
       letter-spacing: 0.1em;
       margin: 0.5em 0;
@@ -85,4 +85,8 @@ div.left {
         cursor: pointer;
       }
     }
+  }
+  .warningForm{
+    color: red;
+    font-size: smaller;
   }

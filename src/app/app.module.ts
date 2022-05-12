@@ -16,6 +16,8 @@ import { RegistroComponent } from './registro/registro.component';
 import { FormsModule } from '@angular/forms';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ChatComponent } from './components/chat/chat.component';
+import {HttpClientModule} from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,14 +29,16 @@ import { ChatComponent } from './components/chat/chat.component';
     AhorcadoComponent,
     RegistroComponent,
     NotFoundComponent,
-    ChatComponent
+    ChatComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
