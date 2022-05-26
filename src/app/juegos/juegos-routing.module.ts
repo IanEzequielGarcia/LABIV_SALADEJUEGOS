@@ -1,5 +1,6 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ListadoPuntajesComponent } from '../components/listado-puntajes/listado-puntajes.component';
 import { AhorcadoComponent } from './ahorcado/ahorcado.component';
 import { JuegoPropioComponent } from './juego-propio/juego-propio.component';
 import { MayorMenorComponent } from './mayor-menor/mayor-menor.component';
@@ -10,6 +11,7 @@ const routes: Routes = [
   {path:'mayor-menor',component:MayorMenorComponent},
   {path:'preguntados',component:PreguntadosComponent},
   {path:'juego-propio',component:JuegoPropioComponent},
+  {path:'puntajes',component:ListadoPuntajesComponent},
 ];
 
 @NgModule({

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EncuestaRespuestasComponent } from './components/encuesta-respuestas/encuesta-respuestas.component';
 import { EncuestaComponent } from './components/encuesta/encuesta.component';
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -10,6 +11,7 @@ import { PreguntadosComponent } from './juegos/preguntados/preguntados.component
 import { LoginPageModule } from './login/login.module';
 import { LoginPage } from './login/login.page';
 import { RegistroComponent } from './registro/registro.component';
+import { GuardAdminServicioGuard } from './services/guard-admin-servicio.guard';
 const routes: Routes = [
   /*{
     path: 'sign-up',
@@ -31,6 +33,10 @@ const routes: Routes = [
   {
     path: 'encuesta',
     component:EncuestaComponent
+  },
+  {
+    path: 'encuestaRespuesta',
+    component:EncuestaRespuestasComponent,canActivate:[GuardAdminServicioGuard]
   },
   {
     path: 'juegos',

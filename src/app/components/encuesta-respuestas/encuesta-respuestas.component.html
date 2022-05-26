@@ -1,0 +1,15 @@
+<div class="card text-center cardContainer">
+    <div class="card-header">
+        Encuesta
+    </div>
+
+    <div class="card-body">
+        <div id="contenedorChat" class="contenedorChat h-90">
+            <p *ngFor="let rtas of respuestaList" class="msj p-2">
+                Nombre:{{rtas.nombre}} id:{{rtas.idEncuestado}}
+                Edad:{{rtas.edad}} Numero:{{rtas.numero}}
+                <br>
+            </p>
+        </div>
+    </div>
+</div>

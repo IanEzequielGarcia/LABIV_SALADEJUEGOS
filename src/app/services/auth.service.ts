@@ -15,36 +15,38 @@ export class AuthService {
   userData: any;
   app = initializeApp(environment.firebaseConfig);
   db = getFirestore(this.app);
+  esAdmin=true;
   constructor(
     private afauth:AngularFireAuth,
     public afStore: AngularFirestore,
     public ngFireAuth: AngularFireAuth,
     public router: Router,
     public ngZone: NgZone,
-    
-    ) {
-      this.ngFireAuth.authState.subscribe((user) => {
-        if (user) {
-          this.userData = user;
-          localStorage.setItem('user', JSON.stringify(this.userData));
-          JSON.parse(localStorage.getItem('user')||'{}');
-        } else {
-          localStorage.setItem('user', '');
-          JSON.parse(localStorage.getItem('user')||'{}');
+    )
+    {
+      this.isLoggedIn().subscribe(usuario=>{
+        if(usuario!=null)
+        {
+          console.log(usuario.email);
+          this.esAdmin=this.EsAdmin(usuario);
+          console.log(this.esAdmin);
         }
       });
-     }
+    }
+  public EsAdmin(usuario:any){
+    return usuario&&usuario.email == "juanperez@gmail.com";
+  }
   public async getMensajes(){
     const snapshot = await firebase.firestore().collection('chat').get()
     return snapshot.docs.map(doc => doc.data());
-
-
-    //@ts-ignore
-    /*return  this.afStore.collection("chat").snapshotChanges((snap)=>{
-      snap.forEach((snapHijo: any)=>{
-        console.log(snapHijo);
-      })
-    });*/
+  }
+  public async getRtasEncuentras(){
+    const snapshot = await firebase.firestore().collection('encuesta').get()
+    return snapshot.docs.map(doc => doc.data());
+  }
+  public async getPuntajes(){
+    const snapshot = await firebase.firestore().collection('puntaje').get()
+    return snapshot.docs.map(doc => doc.data());
   }
   public async logInGoogle() {
     try{

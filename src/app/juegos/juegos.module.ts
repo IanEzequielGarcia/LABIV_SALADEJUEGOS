@@ -11,7 +11,7 @@ import { JuegoPropioComponent } from './juego-propio/juego-propio.component';
   ],
   imports: [
     CommonModule,
-    JuegosRoutingModule
+    JuegosRoutingModule,
   ]
 })
 export class JuegosModule { }

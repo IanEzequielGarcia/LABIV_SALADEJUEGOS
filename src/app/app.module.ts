@@ -19,6 +19,8 @@ import { ChatComponent } from './components/chat/chat.component';
 import {HttpClientModule} from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EncuestaComponent } from './components/encuesta/encuesta.component';
+import { EncuestaRespuestasComponent } from './components/encuesta-respuestas/encuesta-respuestas.component';
+import { ListadoPuntajesComponent } from './components/listado-puntajes/listado-puntajes.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +34,8 @@ import { EncuestaComponent } from './components/encuesta/encuesta.component';
     NotFoundComponent,
     ChatComponent,
     EncuestaComponent,
+    EncuestaRespuestasComponent,
+    ListadoPuntajesComponent
   ],
   imports: [
     BrowserModule,
