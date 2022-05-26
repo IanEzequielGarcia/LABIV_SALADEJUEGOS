@@ -75,6 +75,12 @@ export class AuthService {
   async NuevoMensaje(datos:any){
     addDoc(collection(this.db,"chat"), {datos});
   }
+  async agregarEncuesta(encuesta:any){
+    addDoc(collection(this.db,"encuesta"), {encuesta});
+  }
+  async agregarPuntaje(puntaje:any){
+    addDoc(collection(this.db,"puntaje"), {puntaje});
+  }
   // Email verification when new user register
   /*
   SendVerificationMail() {

@@ -17,8 +17,14 @@
     <img id='hangmanPic' src="https://firebasestorage.googleapis.com/v0/b/tpsaladejuegos-8b998.appspot.com/o/0.png?alt=media&token=e949bb76-84fe-4bc5-847a-5fe772e40471" alt="ahorcado" style="height: 20em;">
     <p>Adivina la red social:</p>
     <p id="wordSpotlight"></p>
-    <div id="keyboard"></div>
-    <button class="btn btn-info" onClick="reset()">Reiniciar</button>
+    <div id="keyboard">
+      <button *ngFor="let letter of keyboard"
+          class="btn btn-lg btn-primary m-2"
+          id="{{letter}}"
+          (click)="handleGuess(letter)">{{letter}}
+      </button>
+    </div>
+    <button class="btn btn-info" (click)="reset()">Reiniciar</button>
   </div>
 </div>
 

@@ -5,8 +5,8 @@ const PEERS = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1,
 export class Board {
   cells: Cell[][] = [];
 
-  private remainingCells = 0;
-  private mineCount = 0;
+  public remainingCells = 0;
+  public mineCount = 0;
 
   constructor(size: number, mines: number) {
     for (let y = 0; y < size; y++) {

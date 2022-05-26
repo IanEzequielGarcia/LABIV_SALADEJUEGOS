@@ -18,6 +18,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ChatComponent } from './components/chat/chat.component';
 import {HttpClientModule} from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EncuestaComponent } from './components/encuesta/encuesta.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     RegistroComponent,
     NotFoundComponent,
     ChatComponent,
+    EncuestaComponent,
   ],
   imports: [
     BrowserModule,

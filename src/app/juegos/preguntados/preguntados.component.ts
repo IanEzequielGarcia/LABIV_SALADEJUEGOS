@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 import { QuizService } from './quiz.service';
 
 export interface Ipais{
@@ -28,7 +29,7 @@ export class PreguntadosComponent implements OnInit {
     bandera:"",
   };
   
-    constructor(private quizService: QuizService,public http:HttpClient) { }
+    constructor(private quizService: QuizService,public http:HttpClient,private authS:AuthService) { }
   
     ngOnInit(): void {
       this.quizzes = this.quizService.getQuizzes();
@@ -79,6 +80,20 @@ export class PreguntadosComponent implements OnInit {
     mostrarRespuesta(){
       this.result = true;
       this.resultStatus = 'Volver a Jugar!';    
+
+        let puntaje={
+          puntos:0,
+          uid:"",
+          fecha:""
+        }
+        this.authS.isLoggedIn().subscribe(usuario=>{
+          puntaje.uid=usuario!.uid;
+          puntaje.puntos=this.correctAnswers-this.incorrectAnswers;
+          puntaje.fecha=Date.now().toString();
+          console.log(puntaje);
+          this.authS.agregarPuntaje(puntaje);
+        })
+      
     }
     playAgain(){
       this.prevAnswered = [];

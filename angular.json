@@ -33,8 +33,7 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": ["src/app/juegos/mayor-menor/cards.js",
-            "src/app/juegos/ahorcado/ahorcado.js"]
+            "scripts": []
           },
           "configurations": {
             "production": {

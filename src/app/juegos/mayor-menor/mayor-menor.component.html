@@ -25,7 +25,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="mayor-menor.component.scss">
-        <script type="text/javascript" src="./cards.js"></script>
+        <script type="text/javascript" src="./aa.js"></script>
     </head>
     <body>
         <div class="game">
@@ -33,17 +33,18 @@
                 <h3>Mayor O Menor</h3>
                 <div class="game-body">
                         <div class="game-options">
-                        <input type="button" id="btnStart" class="btn" value="Iniciar" onclick="startblackjack()">
-                        <input type="button" class="btn" value="Mayor" onclick="hitMe()">
-                        <input type="button" class="btn" value="Menor" onclick="stay()">
+                        <input type="button" id="btnStart" class="btn" value="Iniciar" (click)="startblackjack()">
+                        <input type="button" class="btn" value="Mayor" (click)="hitMe()">
+                        <input type="button" class="btn" value="Menor" (click)="stay()">
                         </div>
                 
                             <div class="status" id="status"></div>
                 
                         <div id="deck" class="deck">
-                            <div id="deckcount">52</div>
+                            <div id="deckcount">10</div>
                         </div>
                 
+                        
                         <div id="players" class="players">
                         </div>
                 
