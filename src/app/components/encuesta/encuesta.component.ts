@@ -16,6 +16,9 @@ export class EncuestaComponent implements OnInit {
     nombre:"",
     edad:0,
     numero:0,
+    rango:0,
+    genero:"",
+    conforme:false
   }
   constructor(private fb:FormBuilder,private auth:AuthService) {
     this.formRepartidor = this.fb.group(
@@ -24,6 +27,10 @@ export class EncuestaComponent implements OnInit {
       'nombre': ['', Validators.required],
       'edad': ['',  Validators.required,Validators.min(18),Validators.max(99)],
       'numero': ['', Validators.required,Validators.maxLength(10)],
+      'rango': ['', Validators.required],
+      'genero': ['', Validators.required],
+      'conforme': ['', Validators.required],
+
       });
   }
   ngOnInit(): void {
@@ -44,6 +51,9 @@ export class EncuestaComponent implements OnInit {
       this.encuestado.nombre=this.formRepartidor.get('nombre')?.value;
       this.encuestado.edad=this.formRepartidor.get('edad')?.value;
       this.encuestado.numero=this.formRepartidor.get('numero')?.value;
+      this.encuestado.genero=this.formRepartidor.get('genero')?.value;
+      this.encuestado.conforme=this.formRepartidor.get('conforme')?.value;
+
       console.log(this.encuestado);
       this.auth.agregarEncuesta(this.encuestado);
     });

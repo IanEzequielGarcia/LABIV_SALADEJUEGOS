@@ -93,6 +93,29 @@
                         </div>
 
 
+                        <div class="col-md-3">
+                            <label for="address" class="form-label">Como calificarias la pagina? {{encuestado.rango}}/10</label>
+                            <input type="range" name="rango" id="rango" min="0" max="10" value="0"
+                            [(ngModel)]="encuestado.rango" class="form-control">
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="address" class="form-label">Como se autopercibe?</label>
+                            <br>
+                            <input type="radio" formControlName="genero" value="hombre" > Hombre
+                            <br>
+                            <input type="radio" formControlName="genero" value="mujer"> Mujer
+                            <br>
+                            <input type="radio" formControlName="genero" value="otro"> No Binario / Otros
+                            <br>
+                            <p class="text-danger" *ngIf="formRepartidor.get('genero')?.errors">genero requerido</p>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="address" class="form-label">Se siente conforme con el diseño?</label>
+                            <input type="checkbox" name="conforme" id="conforme" formControlName="conforme">SI
+                        </div>
+
                         <hr class="my-4">
 
                         <button class="w-100 btn btn-primary btn-lg" type="submit" [disabled]="formRepartidor.invalid"
